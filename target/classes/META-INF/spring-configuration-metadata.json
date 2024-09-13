@@ -1,0 +1,16 @@
+{
+  "groups": [],
+  "properties": [
+    {
+      "name": "spring.neo4j.data.uri",
+      "type": "java.lang.String",
+      "description": "Description for spring.neo4j.uri."
+    },
+    {
+      "name": "swagger.base.package",
+      "type": "java.lang.String",
+      "description": "Description for swagger.base.package."
+    }
+  ],
+  "hints": []
+}

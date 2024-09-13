@@ -1,0 +1,23 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    driver-class-name : com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/lineage?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password:
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://192.168.10.151:5433/lineage?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+#    username: lineage
+#    password: lineage@123
+  data:
+    neo4j:
+        uri: bolt://localhost:7687
+        username: neo4j
+        password: 123456
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.aitguigu.dataSecure.domain
+  #开启驼峰命名 该配置项就是指将带有下划线的表字段映射为驼峰格式的实体类属性
+  configuration:
+    map-underscore-to-camel-case: false
