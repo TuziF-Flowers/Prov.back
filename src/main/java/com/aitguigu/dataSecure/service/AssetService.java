@@ -1,7 +1,6 @@
 package com.aitguigu.dataSecure.service;
 
-import com.aitguigu.dataSecure.domain.UserDTO;
-import com.aitguigu.dataSecure.domain.XunitDTO;
+import com.aitguigu.dataSecure.domain.*;
 import com.aitguigu.dataSecure.entity.Application;
 
 import java.util.List;
@@ -15,4 +14,8 @@ public interface AssetService {
 //    public List<Object[]> getManualActivities();
     public List<XunitDTO> getCountOfDistinctXunitBeforeAt();
     public List<UserDTO> getNameAndPhone();
+    public List<ManualDTO> findManualActivitiesWithApplicationNative();
+    public List<AppjobnumDTO> findApplicationWithJobCountNative();
+    public List<UserjobnumDTO> findUserWithJobCount();
+    public List<AppUserjobnum> findApplicationWithUserAndJobCount();
 }

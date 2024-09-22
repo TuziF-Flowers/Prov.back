@@ -20,5 +20,23 @@ public interface UserRepository extends JpaRepository<User,String> {
             "END AS phone " +
             "FROM user u", nativeQuery = true)
     List<Object[]> findNameAndPhone();
+    @Query(value = "SELECT DISTINCT A.NAME, A.PHONE, SUBSTRING_INDEX(A.XUNIT, '@', 1) AS XUNIT1, " +
+            "COUNT(DISTINCT B.XJOB) AS jobnum " +
+            "FROM user A " +
+            "LEFT JOIN worklog_fact B ON A.XIDENTITY = B.XIDENTITY " +
+            "GROUP BY A.NAME, A.PHONE, A.XPERSON, SUBSTRING_INDEX(A.XUNIT, '@', 1) " +
+            "ORDER BY COUNT(DISTINCT B.XJOB) DESC",
+            nativeQuery = true)
+    List<Object[]> findUserWithJobCount();
+    @Query(value = "SELECT DISTINCT application.XAPPLICATIONNAME, A.NAME, A.PHONE, " +
+            "SUBSTRING_INDEX(A.XUNIT, '@', 1) AS XUNIT1, " +
+            "COUNT(DISTINCT B.XJOB) AS jobnum " +
+            "FROM user A " +
+            "JOIN worklog_fact B ON A.XIDENTITY = B.XIDENTITY " +
+            "JOIN application ON B.XAPPLICATION = application.XAPPLICATION " +
+            "GROUP BY application.XAPPLICATIONNAME, A.NAME, A.PHONE, SUBSTRING_INDEX(A.XUNIT, '@', 1) " +
+            "ORDER BY COUNT(DISTINCT B.XJOB) DESC",
+            nativeQuery = true)
+    List<Object[]> findApplicationWithUserAndJobCount();
 
 }
