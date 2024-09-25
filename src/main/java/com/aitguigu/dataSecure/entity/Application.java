@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 @Entity(name="application")
 @Data
-@NoArgsConstructor
+
 public class Application {
     @Id
     private String XAPPLICATION;

@@ -2,9 +2,12 @@ package com.aitguigu.dataSecure.service.impl;
 
 import com.aitguigu.dataSecure.domain.*;
 import com.aitguigu.dataSecure.entity.Application;
+import com.aitguigu.dataSecure.entity.MyEntity;
 import com.aitguigu.dataSecure.repository.ActivityRepository;
 import com.aitguigu.dataSecure.repository.ApplicationRepository;
 import com.aitguigu.dataSecure.repository.UserRepository;
+
+import com.aitguigu.dataSecure.repository.WorklogRepository;
 import com.aitguigu.dataSecure.service.AssetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,8 +22,11 @@ public class AssetServiceImpl implements AssetService {
     private ApplicationRepository applicationRepository;
     @Autowired
     private ActivityRepository activityRepository;
+
     @Autowired
     private UserRepository userRepository;
+
+
 
 
 
@@ -31,10 +37,16 @@ public class AssetServiceImpl implements AssetService {
 
         for (Object[] result : results) {
             String name = (String) result[0];  // 提取 name
+            StringBuilder temp = new StringBuilder(name);
+            temp.replace(1,name.length()-1,"*");
             String phone = (String) result[1]; // 提取 phone
 
+            if(phone!=null&&phone.length()!=0){
+                phone=new StringBuilder(phone).replace(3,7,"****").toString();
+            }
+
             // 创建 UserDTO 并添加到列表中
-            userDTOList.add(new UserDTO(name, phone));
+            userDTOList.add(new UserDTO(temp.toString(), phone));
         }
 
         return userDTOList;
@@ -97,6 +109,8 @@ public class AssetServiceImpl implements AssetService {
     }
 
 
+
+
     public long countDistinctXAPPLICATION()
     {
         return applicationRepository.countDistinctXAPPLICATION();
@@ -121,6 +135,12 @@ public class AssetServiceImpl implements AssetService {
 
         return XunitDTOList;
     }
+    @Autowired
+    private WorklogRepository worklogRepository;
 
+    public List<MyEntity> getWorklogStatistics(String col, String groupby) {
+        System.out.println(worklogRepository.findWorklogStatistics(col, groupby));
+        return worklogRepository.findWorklogStatistics(col, groupby);
+    }
 
 }

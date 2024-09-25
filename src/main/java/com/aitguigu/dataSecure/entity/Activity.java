@@ -9,9 +9,10 @@ import javax.persistence.Id;
 
 @Entity(name="activity")
 @Data
-@NoArgsConstructor
+
 public class Activity {
     @Id
+
     private String ACTIVITY;
     private String ACTIVITYALIAS;
     private String ACTIVITYNAME;

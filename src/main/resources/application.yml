@@ -3,9 +3,9 @@ server:
 spring:
   datasource:
     driver-class-name : com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/lineage?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/xt?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
     username: root
-    password:
+    password: 123456789$
 #    driver-class-name: org.postgresql.Driver
 #    url: jdbc:postgresql://192.168.10.151:5433/lineage?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
 #    username: lineage

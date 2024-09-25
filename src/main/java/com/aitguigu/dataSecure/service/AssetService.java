@@ -2,10 +2,13 @@ package com.aitguigu.dataSecure.service;
 
 import com.aitguigu.dataSecure.domain.*;
 import com.aitguigu.dataSecure.entity.Application;
+import com.aitguigu.dataSecure.entity.MyEntity;
 
 import java.util.List;
 
 public interface AssetService {
+
+
     public long countDistinctXAPPLICATION();
     public List<Application> findALL();
 //    public long countDistinctACTIVITY();
@@ -18,4 +21,6 @@ public interface AssetService {
     public List<AppjobnumDTO> findApplicationWithJobCountNative();
     public List<UserjobnumDTO> findUserWithJobCount();
     public List<AppUserjobnum> findApplicationWithUserAndJobCount();
+    public List<MyEntity> getWorklogStatistics(String col, String groupby);
+
 }
